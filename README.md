@@ -21,3 +21,4 @@
 # 기술스택
 
 - react.js
+- tailwind
