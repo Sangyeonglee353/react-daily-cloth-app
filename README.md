@@ -21,4 +21,7 @@
 # 기술스택
 
 - react.js
-- tailwind
+- tailwind: CSS
+- FileAPI: excel 파일 읽기
+- sheetjs: excel 파일 변환(위도, 경도 정보)
+- 기상청 OpenAPI: 날씨 정보

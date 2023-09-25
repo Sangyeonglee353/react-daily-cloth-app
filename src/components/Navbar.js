@@ -10,19 +10,29 @@ const Navbar = () => {
           <h1 className="mr-4 text-3xl font-bold sm:text-4xl">Alook</h1>
           <ul className="hidden md:flex">
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/" className="cursor-pointer">
+                Home
+              </Link>
             </li>
             <li>
-              <Link to="about">About</Link>
+              <Link to="about" className="cursor-pointer">
+                About
+              </Link>
             </li>
             <li>
-              <Link to="match">Match</Link>
+              <Link to="match" className="cursor-pointer">
+                Match
+              </Link>
             </li>
             <li>
-              <Link to="daily">Daily</Link>
+              <Link to="daily" className="cursor-pointer">
+                Daily
+              </Link>
             </li>
             <li>
-              <Link to="closet">Closet</Link>
+              <Link to="closet" className="cursor-pointer">
+                Closet
+              </Link>
             </li>
           </ul>
         </div>
@@ -42,27 +52,43 @@ const Navbar = () => {
       </div>
       <ul className={!nav ? "hidden" : "absolute bg-zinc-200 w-full px-8"}>
         <li className="w-full border-b-2 border-zinc-300">
-          <Link onClick={() => setNav(false)} to="/">
+          <Link onClick={() => setNav(false)} to="/" className="cursor-pointer">
             Home
           </Link>
         </li>
         <li className="w-full border-b-2 border-zinc-300">
-          <Link onClick={() => setNav(false)} to="match">
+          <Link
+            onClick={() => setNav(false)}
+            to="about"
+            className="cursor-pointer"
+          >
             About
           </Link>
         </li>
         <li className="w-full border-b-2 border-zinc-300">
-          <Link onClick={() => setNav(false)} to="match">
+          <Link
+            onClick={() => setNav(false)}
+            to="match"
+            className="cursor-pointer"
+          >
             Match
           </Link>
         </li>
         <li className="w-full border-b-2 border-zinc-300">
-          <Link onClick={() => setNav(false)} to="daily">
+          <Link
+            onClick={() => setNav(false)}
+            to="daily"
+            className="cursor-pointer"
+          >
             Daily
           </Link>
         </li>
         <li className="w-full border-b-2 border-zinc-300">
-          <Link onClick={() => setNav(false)} to="closet">
+          <Link
+            onClick={() => setNav(false)}
+            to="closet"
+            className="cursor-pointer"
+          >
             Closet
           </Link>
         </li>
