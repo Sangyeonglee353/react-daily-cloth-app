@@ -42,3 +42,8 @@
 - FileAPI: excel 파일 읽기
 - sheetjs: excel 파일 변환(위도, 경도 정보)
 - 기상청 OpenAPI: 날씨 정보
+
+# 향후 계획
+
+- react 기반으로 프로토타입 완성
+- next.js 학습 후 마이그레이션 진행
