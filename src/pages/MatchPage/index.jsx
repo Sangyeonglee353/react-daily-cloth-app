@@ -26,10 +26,10 @@ const MatchPage = () => {
       <div className="w-full h-full flex flex-col justify-center max-w-screen-lg p-4 mx-auto">
         <div className="w-full h-[30vh] flex flex-col md:flex-row">
           <div className="w-full md:w-1/2 h-full flex bg-gray-500">
-            {/* <KakaoMap /> */}
-            <span className="w-full flex justify-center items-center text-2xl">
+            <KakaoMap />
+            {/* <span className="w-full flex justify-center items-center text-2xl">
               KakaoMap
-            </span>
+            </span> */}
           </div>
           <div className="w-full md:w-1/2 h-full flex bg-orange-300">
             {/* <Weather /> */}
