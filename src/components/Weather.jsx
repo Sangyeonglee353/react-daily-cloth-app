@@ -112,15 +112,16 @@ const Weather = () => {
 
   const getWeatherData = async () => {
     try {
-      // 1. 오늘 날짜 가져오기 & 현재 시간 가져오기
+      // [기능 1] 오늘 날짜 가져오기 & 현재 시간 가져오기
       const today = new Date();
       const year = today.getFullYear();
       const month = (today.getMonth() + 1).toString().padStart(2, 0); // 0부터 시작하므로 +1 & 1자리 인경우 0으로 시작
-      const day = today.getDate();
+      const day = today.getDate().toString().padStart(2, 0); // 1의 자리 수인 경우 십의 자리에 0 추가
       const hours = today.getHours().toString().padStart(2, 0);
       const minutes = today.getMinutes().toString().padStart(2, 0);
+      const baseDate = year + month + day;
 
-      // [기능] API 호출 시간 변경
+      // [기능 2] API 호출 시간 변경
       // 매 API 제공시간 이전에는 해당 시간의 00~30분은 동작하지 않는다.
       // 해당 시간의 API가 발표된 이후에는 가장 근접한 발표시간의 값을 반환한다.
       // 따라서, 00~30분인 경우, 이전 시간의 발표시각을 기준으로 API 호출
@@ -143,7 +144,7 @@ const Weather = () => {
       queryParams.append("pageNo", "1");
       queryParams.append("numOfRows", "1000");
       queryParams.append("dataType", "XML");
-      queryParams.append("base_date", `${year}${month}${day}`);
+      queryParams.append("base_date", baseDate);
       queryParams.append("base_time", baseTime);
       queryParams.append("nx", "55");
       queryParams.append("ny", "127");
@@ -385,19 +386,33 @@ const Weather = () => {
   return (
     <section name="weatherinfo" className="flex w-full h-screen">
       <div className="w-full h-auto bg-white rounded-md">
-        <div className="flex justify-center mt-5">
-          <img src={weatherLogo} alt="weather_logo" className="w-8" />
-          <h2 className="font-bold text-center text-2xl pl-2">
-            기상청{" "}
+        <div className="w-full flex items-center mt-2 pl-2">
+          <div className="flex items-center">
+            <img src={weatherLogo} alt="weather_logo" className="w-6 h-6" />
+            <h2 className="font-bold text-center text-xl pl-2">
+              기상청
+              {/* 
             {latLng.lat &&
-              `(${latLng.lat.toFixed(4)}°, ${latLng.lng.toFixed(4)}°)`}
-          </h2>
+              `(${latLng.lat.toFixed(4)}°, ${latLng.lng.toFixed(4)}°)`} */}
+            </h2>
+          </div>
+          {weatherData.baseDate !== null && (
+            <div className="ml-auto">
+              <span>
+                {weatherData.baseDate.slice(0, 4)}년{" "}
+                {weatherData.baseDate.slice(4, 6)}월{" "}
+                {weatherData.baseDate.slice(6)}일{" "}
+                {weatherData.baseTime.slice(0, 2)}시{" "}
+                {weatherData.baseTime.slice(2)}분(예보)
+              </span>
+            </div>
+          )}
         </div>
-        <div className="xl:h-[calc(50vh-3.25rem)] flex flex-col xl:flex-row justify-center items-center px-10">
+        <div className="flex flex-col justify-center items-center px-10">
           {weatherData.baseDate !== null ? (
             <>
-              <div className="w-full xl:w-1/3 flex flex-col justify-center items-center">
-                <div className="flex justify-center items-center mt-5">
+              <div className="w-full flex justify-center items-center mt-5">
+                <div className="flex justify-center items-center">
                   <div className="relative">
                     <img
                       src={
@@ -418,28 +433,24 @@ const Weather = () => {
                           : sunIcon
                       }
                       alt="weather_sun"
-                      className="max-w-[15rem] xl:max-w-1/2"
+                      className="max-w-[2.5rem] xl:max-w-1/2"
                     />
-                    <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-xl">
-                      {weatherData.baseTime.slice(0, 2)}시{" "}
-                      {weatherData.baseTime.slice(2)}분
-                    </span>
                   </div>
-                </div>
-                {/* <span className="block text-center mt-2">
+                  {/* <span className="block text-center mt-2">
                   {weatherData.nx}, {weatherData.ny}
                 </span> */}
-                <span className="block text-center text-xl mt-2">
-                  {weatherData.tempValueList[0]}℃ /{" "}
-                  {weatherData.humidityValueList[0]}%
-                </span>
-                <span className="block font-bold text-center text-2xl mt-2">
-                  {weatherData.baseDate.slice(0, 4)}년{" "}
-                  {weatherData.baseDate.slice(4, 6)}월{" "}
-                  {weatherData.baseDate.slice(6)}일
-                </span>
+                  <span className="absolute text-3xl pl-14">
+                    {weatherData.tempValueList[0]}℃
+                  </span>
+                </div>
+                <div className="flex flex-col ml-12">
+                  <span className="text-xl">
+                    {weatherData.statusValueList[0]}
+                  </span>
+                  <span>습도 {weatherData.humidityValueList[0]}%</span>
+                </div>
               </div>
-              <div className="w-full xl:w-2/3 flex flex-col justify-center items-center p-5">
+              <div className="w-full flex flex-col justify-center items-center p-5">
                 <Chart weatherData={weatherData} />
               </div>
             </>

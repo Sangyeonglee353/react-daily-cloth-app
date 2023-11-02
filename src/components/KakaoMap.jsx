@@ -248,7 +248,7 @@ const KakaoMap = () => {
         url={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_API_KEY}&autoload=false&libraries=services`}
         onLoad={getKakaoMapData}
       />
-      <div className="w-full h-[30vh] flex flex-col m-auto relative">
+      <div className="w-full h-full flex flex-col m-auto relative">
         <div id="kakao-map" className="w-full h-[30vh] z-[1]"></div>
         <div className="absolute left-5 top-5 border rounded-[2px] bg-white bg-opacity-80 z-[2] p-5">
           <span className="block font-bold">지도중심기준 행정동 주소정보</span>
