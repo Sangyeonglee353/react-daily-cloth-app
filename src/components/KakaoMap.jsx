@@ -20,10 +20,12 @@ import { useEffect, useState } from "react";
 import Script from "react-load-script";
 import config from "../api/apikey";
 
-const KakaoMap = () => {
+const KakaoMap = ({ handleMapCoord }) => {
   const KAKAO_API_KEY = config.KAKAO_API_KEY;
-  const [latitude, setLatitude] = useState(""); // 위도
-  const [longitude, setLongitude] = useState(""); // 경도
+  const [coord, setCoord] = useState({
+    latitude: 37.5665,
+    longitude: 126.978,
+  });
   const [searchText, setSearchText] = useState(""); // 검색어
 
   // 카카오 맵 관련 변수 선언
@@ -31,6 +33,11 @@ const KakaoMap = () => {
   const [marker, setMarker] = useState(null);
   const [geocoder, setGeocoder] = useState(null);
   const [infowindow, setInfowindow] = useState(null);
+
+  // [함수 선언] 상위 컴포넌트에 경도와 위도값 전달
+  const changeMapCoord = (lat, lng) => {
+    handleMapCoord(lat, lng);
+  };
 
   const handleSearchText = (e) => {
     setSearchText(e.target.value);
@@ -136,8 +143,10 @@ const KakaoMap = () => {
       presentMarker(coords.getLat(), coords.getLng());
 
       // 💫 Save latitude and longitude in the state
-      setLatitude(coords.getLat());
-      setLongitude(coords.getLng());
+      setCoord({
+        latitude: coords.getLat(),
+        longitude: coords.getLng(),
+      });
 
       // 💫 Present address info
       infowindow.setContent(content);
@@ -175,7 +184,8 @@ const KakaoMap = () => {
       window.kakao.maps.load(() => {
         const container = document.getElementById("kakao-map");
         const options = {
-          center: new window.kakao.maps.LatLng(37.5665, 126.978), // 좌표 설정
+          // center: new window.kakao.maps.LatLng(37.5665, 126.978), // 좌표 설정
+          center: new window.kakao.maps.LatLng(coord.latitude, coord.longitude), // 좌표 설정
           level: 3, // 확대 수준 설정
         };
         // 💫 Create Map
@@ -241,6 +251,11 @@ const KakaoMap = () => {
     handleEvent();
   }, [map]);
 
+  // [함수 실행] 상위 컴포넌트에 경도와 위도값 전달
+  useEffect(() => {
+    changeMapCoord(coord.latitude, coord.longitude);
+  }, [coord]);
+
   return (
     <section name="kakaomap" className="w-full h-autofull flex relative">
       {/* 콘텐츠 */}
@@ -266,8 +281,10 @@ const KakaoMap = () => {
             검색
           </button>
           <span className="absolute font-bold right-2 leading-8">
-            {latitude &&
-              `위도: ${latitude.toFixed(4)}, 경도: ${longitude.toFixed(4)}`}
+            {coord.latitude &&
+              `위도: ${coord.latitude.toFixed(
+                4
+              )}, 경도: ${coord.longitude.toFixed(4)}`}
             {/* 소수점 4째자리까지 */}
           </span>
         </div>

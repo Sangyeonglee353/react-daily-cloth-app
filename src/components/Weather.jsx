@@ -67,10 +67,14 @@ import snowIcon from "../assets/images/snow.png"; // Snow: 눈
 import Chart from "../components/Chart";
 import weatherLogo from "../assets/images/weather_logo.png";
 
-const Weather = () => {
+const Weather = ({ mapCoord }) => {
   const WEATHER_API_KEY = config.WEATHER_API_KEY;
   const [xhr, setXhr] = useState(null);
   // 예보시각별로 저장
+  const [weatherCoord, setWeatherCoord] = useState({
+    x: "",
+    y: "",
+  }); // 기상청 API nx, ny 좌표
   const [weatherData, setWeatherData] = useState({
     baseDate: null, // 발표일자
     baseTime: null, // 발표시각
@@ -83,20 +87,20 @@ const Weather = () => {
     humidityValueList: [], // 습도(%)_자료구분코드: REH
   });
 
-  const [latLng, setLatLng] = useState({ lat: null, lng: null });
+  // const [latLng, setLatLng] = useState({ lat: null, lng: null });
 
   useEffect(() => {
-    const fetchData = async () => {
-      await getWeatherData();
+    console.log("mapCoord: " + mapCoord.latitude + ", " + mapCoord.longitude);
+    setWeatherCoord(dfs_xy_conv("toXY", mapCoord.latitude, mapCoord.longitude));
+  }, [mapCoord]);
+
+  useEffect(() => {
+    const fetchData = async (coord) => {
+      await getWeatherData(coord);
     };
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    setLatLng(dfs_xy_conv("toLL", weatherData.nx, weatherData.ny));
-    console.log("Latitude: " + latLng.lat + "\nLongitude: " + latLng.lng);
-    console.log("nx: " + weatherData.nx + "\nny: " + weatherData.ny);
-  }, [weatherData.nx, weatherData.ny]);
+    fetchData(weatherCoord);
+    console.log("WeatherCoord: " + weatherCoord.x + ", " + weatherCoord.y);
+  }, [weatherCoord]);
 
   // const [categoryList, setCategoryList] = useState([]); // 카테고리 확인 -> 총 10개
   // const [fcstTimeList, setFcstTimeList] = useState([]); // 예보시각 확인 -> 총 6개
@@ -110,7 +114,7 @@ const Weather = () => {
   //   console.log(uniqueArray);
   // }, [fcstTimeList]);
 
-  const getWeatherData = async () => {
+  const getWeatherData = async (weatherCoord) => {
     try {
       // [기능 1] 오늘 날짜 가져오기 & 현재 시간 가져오기
       const today = new Date();
@@ -146,8 +150,10 @@ const Weather = () => {
       queryParams.append("dataType", "XML");
       queryParams.append("base_date", baseDate);
       queryParams.append("base_time", baseTime);
-      queryParams.append("nx", "55");
-      queryParams.append("ny", "127");
+      // queryParams.append("nx", "55");
+      // queryParams.append("ny", "127");
+      queryParams.append("nx", weatherCoord.x);
+      queryParams.append("ny", weatherCoord.y);
 
       xhr.open("GET", url + "?" + queryParams.toString());
 

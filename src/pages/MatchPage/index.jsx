@@ -23,17 +23,38 @@
  * **/
 import Weather from "../../components/Weather";
 import KakaoMap from "../../components/KakaoMap";
+import { useEffect, useState } from "react";
 
 const MatchPage = () => {
+  const [mapCoord, setMapCoord] = useState({
+    // latitude: "",
+    // longitude: "",
+    latitude: 37.5665,
+    longitude: 126.978,
+  });
+
+  const handleMapCoord = (lat, lng) => {
+    setMapCoord({
+      latitude: lat,
+      longitude: lng,
+    });
+  };
+
+  useEffect(() => {
+    console.log(
+      "changed lat: " + mapCoord.latitude + " lng: " + mapCoord.longitude
+    );
+  }, [mapCoord]);
+
   return (
     <section name="match" className="w-full h-screen flex">
       <div className="w-full h-full flex flex-col justify-center max-w-screen-lg p-4 mx-auto">
         <div className="w-full h-[60vh] md:h-[30vh] flex flex-col md:flex-row">
           <div className="w-full md:w-1/2 h-full flex bg-gray-500">
-            <KakaoMap />
+            <KakaoMap handleMapCoord={handleMapCoord} />
           </div>
           <div className="w-full md:w-1/2 h-full flex bg-orange-300">
-            <Weather />
+            <Weather mapCoord={mapCoord} />
           </div>
         </div>
         <div className="w-full h-[10vh] bg-lime-400">
@@ -46,7 +67,7 @@ const MatchPage = () => {
             <li>6</li>
           </ul>
         </div>
-        {/* <div className="w-full h-[40vh] bg-red-400">Today cloth Pick</div> */}
+        <div className="w-full h-[40vh] bg-red-400">Today cloth Pick</div>
       </div>
     </section>
   );
