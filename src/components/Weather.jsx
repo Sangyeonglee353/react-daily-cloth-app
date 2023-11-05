@@ -87,8 +87,6 @@ const Weather = ({ mapCoord }) => {
     humidityValueList: [], // 습도(%)_자료구분코드: REH
   });
 
-  // const [latLng, setLatLng] = useState({ lat: null, lng: null });
-
   useEffect(() => {
     console.log("mapCoord: " + mapCoord.latitude + ", " + mapCoord.longitude);
     setWeatherCoord(dfs_xy_conv("toXY", mapCoord.latitude, mapCoord.longitude));
@@ -96,9 +94,11 @@ const Weather = ({ mapCoord }) => {
 
   useEffect(() => {
     const fetchData = async (coord) => {
-      await getWeatherData(coord);
+      const response = await getWeatherData(coord);
+      handleResponse(response);
     };
     fetchData(weatherCoord);
+    // handleResponse(res);
     console.log("WeatherCoord: " + weatherCoord.x + ", " + weatherCoord.y);
   }, [weatherCoord]);
 
@@ -169,7 +169,8 @@ const Weather = ({ mapCoord }) => {
         };
         xhr.send();
       });
-      handleResponse(response);
+      return response;
+      // handleResponse(response);
     } catch (error) {
       console.error(error);
     }

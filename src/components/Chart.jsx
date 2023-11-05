@@ -120,11 +120,11 @@ const Chart = (props) => {
 
   useEffect(() => {
     if (props.weatherData) {
-      setFcstTimeList(props.weatherData.fcstTimeList);
-      setTempValueList(props.weatherData.tempValueList);
-      setHumidityValueList(props.weatherData.humidityValueList);
+      setFcstTimeList([...props.weatherData.fcstTimeList]);
+      setTempValueList([...props.weatherData.tempValueList]);
+      setHumidityValueList([...props.weatherData.humidityValueList]);
     }
-  }, []);
+  }, [props.weatherData]);
   return (
     <div className="w-full h-full">
       <Line data={data} options={options} />
