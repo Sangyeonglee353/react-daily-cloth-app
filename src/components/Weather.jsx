@@ -93,6 +93,18 @@ const Weather = ({ mapCoord }) => {
   }, [mapCoord]);
 
   useEffect(() => {
+    // [기능] 위도와 경도 변경 시, 값 누적 방지를 위한 Data 초기화
+    setWeatherData({
+      baseDate: null,
+      baseTime: null,
+      nx: null,
+      ny: null,
+      fcstDate: null,
+      fcstTimeList: [],
+      tempValueList: [],
+      statusValueList: [],
+      humidityValueList: [],
+    });
     const fetchData = async (coord) => {
       const response = await getWeatherData(coord);
       handleResponse(response);
