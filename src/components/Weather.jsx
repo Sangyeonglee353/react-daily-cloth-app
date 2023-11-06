@@ -92,26 +92,36 @@ const Weather = ({ mapCoord }) => {
     setWeatherCoord(dfs_xy_conv("toXY", mapCoord.latitude, mapCoord.longitude));
   }, [mapCoord]);
 
+  // useEffect(() => {
+  //   const fetchData = async (coord) => {
+  //     const response = await getWeatherData(coord);
+  //     handleResponse(response);
+  //   };
+  //   fetchData(weatherCoord);
+  // }, []);
+
   useEffect(() => {
     // [기능] 위도와 경도 변경 시, 값 누적 방지를 위한 Data 초기화
-    setWeatherData({
-      baseDate: null,
-      baseTime: null,
-      nx: null,
-      ny: null,
-      fcstDate: null,
-      fcstTimeList: [],
-      tempValueList: [],
-      statusValueList: [],
-      humidityValueList: [],
-    });
-    const fetchData = async (coord) => {
-      const response = await getWeatherData(coord);
-      handleResponse(response);
-    };
-    fetchData(weatherCoord);
-    // handleResponse(res);
-    console.log("WeatherCoord: " + weatherCoord.x + ", " + weatherCoord.y);
+    if (weatherCoord.x && weatherCoord.y) {
+      setWeatherData({
+        baseDate: null,
+        baseTime: null,
+        nx: null,
+        ny: null,
+        fcstDate: null,
+        fcstTimeList: [],
+        tempValueList: [],
+        statusValueList: [],
+        humidityValueList: [],
+      });
+      const fetchData = async (coord) => {
+        const response = await getWeatherData(coord);
+        handleResponse(response);
+      };
+      fetchData(weatherCoord);
+      // handleResponse(res);
+      console.log("WeatherCoord: " + weatherCoord.x + ", " + weatherCoord.y);
+    }
   }, [weatherCoord]);
 
   // const [categoryList, setCategoryList] = useState([]); // 카테고리 확인 -> 총 10개
@@ -265,6 +275,8 @@ const Weather = ({ mapCoord }) => {
           // console.log("tempValue: ", fcstValue);
         } else if (category === "PTY") {
           // 강수상태(코드값) -> 텍스트 변환
+          // (초단기) 없음(0), 비(1), 비/눈(2), 눈(3), 빗방울(5), 빗방울눈날림(6), 눈날림(7)
+          // (단기) 없음(0), 비(1), 비/눈(2), 눈(3), 소나기(4)
           let status;
           if (fcstValue === "0") {
             status = "없음";
@@ -279,6 +291,7 @@ const Weather = ({ mapCoord }) => {
           } else {
             status = "측정불가";
           }
+          console.log("status: " + status + "fcstValue: " + fcstValue);
 
           // [조건] 강수상태 = "없음"인 경우: 하늘상태만 보면 되므로 제외
           // ✅ 단, 확인필요사항: "없음" 이외의 경우: 하늘 상태는 "흐림"으로 고정인지?
