@@ -67,7 +67,7 @@ import snowIcon from "../assets/images/snow.png"; // Snow: 눈
 import Chart from "../components/Chart";
 import weatherLogo from "../assets/images/weather_logo.png";
 
-const Weather = ({ mapCoord }) => {
+const Weather = ({ mapCoord, handleTemperature }) => {
   const WEATHER_API_KEY = config.WEATHER_API_KEY;
   const [xhr, setXhr] = useState(null);
   // 예보시각별로 저장
@@ -99,6 +99,15 @@ const Weather = ({ mapCoord }) => {
   //   };
   //   fetchData(weatherCoord);
   // }, []);
+
+  // [기능] 현재 온도 값을 전달
+  const changeTemperature = (temp) => {
+    handleTemperature(temp);
+  };
+
+  useEffect(() => {
+    changeTemperature(weatherData.tempValueList[0]); // 위치 변경 필요_231107(화)
+  }, [weatherData.nx, weatherData.ny]);
 
   useEffect(() => {
     // [기능] 위도와 경도 변경 시, 값 누적 방지를 위한 Data 초기화
@@ -247,11 +256,11 @@ const Weather = ({ mapCoord }) => {
             ny: ny,
             fcstDate: fcstDate,
           }));
-          console.log("baseDate: ", baseDate);
-          console.log("baseTime: ", baseTime);
-          console.log("nx: ", nx);
-          console.log("ny: ", ny);
-          console.log("fcstDate: ", fcstDate);
+          // console.log("baseDate: ", baseDate);
+          // console.log("baseTime: ", baseTime);
+          // console.log("nx: ", nx);
+          // console.log("ny: ", ny);
+          // console.log("fcstDate: ", fcstDate);
         }
 
         // 예보시각(6개)를 기준으로 총 10개의 값이 호출됨.

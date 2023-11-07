@@ -1,11 +1,11 @@
 /* 날씨에 맞는 옷 추천 페이지 */
 /** 세부 기능
- * 1. 날씨 표시
+ * 1. 카카오맵과 날씨 표시
  * - 지역 선택(Kakao map 연결 & 위도 경도 정보 가져오기)
  * - 날씨 가져오기(위도, 경도와 날씨 API의 위도, 경도값 매칭)
- *  - 버전 1. 드롭다운 형식
+ *  - 버전 1. 드롭다운 형식 (X)
  *  - 버전 2. kakao map -> 해당 위/경도와 가장 비슷한 값의 지역구의 날씨 정보 출력
- * - 날씨 표시하기
+ *    [추가 기능] 현재 GPS 정보를 기반으로 날씨 확인
  * 2. 날씨별 추천 시스템
  * - 색상: 과연 색상을 어떻게 보여주는 것이 가장 Best일 것인가?
  *   - 색상 조합(2~3가지)
@@ -23,6 +23,7 @@
  * **/
 import Weather from "../../components/Weather";
 import KakaoMap from "../../components/KakaoMap";
+import TempCloth from "../../components/TempCloth";
 import { useEffect, useState } from "react";
 
 const MatchPage = () => {
@@ -33,6 +34,8 @@ const MatchPage = () => {
     longitude: 126.978,
   });
 
+  const [temperature, setTemperature] = useState();
+
   const handleMapCoord = (lat, lng) => {
     setMapCoord({
       latitude: lat,
@@ -40,10 +43,15 @@ const MatchPage = () => {
     });
   };
 
+  const handleTemperature = (temp) => {
+    setTemperature(temp);
+  };
+
   useEffect(() => {
     console.log(
       "changed lat: " + mapCoord.latitude + " lng: " + mapCoord.longitude
     );
+    // console.log("changed temp: " + temperature);
   }, [mapCoord]);
 
   return (
@@ -54,18 +62,14 @@ const MatchPage = () => {
             <KakaoMap handleMapCoord={handleMapCoord} />
           </div>
           <div className="w-full md:w-1/2 h-full flex bg-orange-300">
-            <Weather mapCoord={mapCoord} />
+            <Weather
+              mapCoord={mapCoord}
+              handleTemperature={handleTemperature}
+            />
           </div>
         </div>
         <div className="w-full h-[10vh] bg-lime-400">
-          <ul className="w-full h-full flex flex-row items-center bg-cyan-500">
-            <li className="bg-yellow-500">1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-            <li>6</li>
-          </ul>
+          <TempCloth temperature={temperature} />
         </div>
         <div className="w-full h-[40vh] bg-red-400">Today cloth Pick</div>
       </div>

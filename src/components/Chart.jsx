@@ -121,7 +121,6 @@ const Chart = (props) => {
   useEffect(() => {
     if (props.weatherData) {
       // [기능 추가] 맨처음 데이터가 두 번 추가되는 오류 해결
-      console.log("length: " + props.weatherData.fcstTimeList.length);
       if (props.weatherData.fcstTimeList.length > 6) {
         const sliceFcstTimeList = props.weatherData.fcstTimeList.slice(0, 6);
         const sliceTempValueList = props.weatherData.tempValueList.slice(0, 6);
