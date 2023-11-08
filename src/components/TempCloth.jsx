@@ -1,5 +1,9 @@
 import React, { useState } from "react";
+/*
+* [구현 전]
+* - 슬롯 머신처럼 나오는 효과
 
+*/
 const TempCloth = ({ temperature }) => {
   const cloths = [
     ["패딩", "두꺼운 코트", "누빔 옷", "기모", "목도리"],
