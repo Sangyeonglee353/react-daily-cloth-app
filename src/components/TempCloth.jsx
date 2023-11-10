@@ -23,7 +23,7 @@ const TempCloth = ({ temperature }) => {
       return cloths[0];
     } else if (tempNum >= 5 && tempNum < 9) {
       return cloths[1];
-    } else if (tempNum >= 10 && tempNum < 12) {
+    } else if (tempNum >= 9 && tempNum < 12) {
       return cloths[2];
     } else if (tempNum >= 12 && tempNum < 17) {
       return cloths[3];
