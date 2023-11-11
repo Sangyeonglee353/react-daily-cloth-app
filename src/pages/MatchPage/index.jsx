@@ -24,6 +24,7 @@
 import Weather from "../../components/Weather";
 import KakaoMap from "../../components/KakaoMap";
 import TempCloth from "../../components/TempCloth";
+import ColorMap from "../../components/ColorMap";
 import { useEffect, useState } from "react";
 
 const MatchPage = () => {
@@ -71,7 +72,9 @@ const MatchPage = () => {
         <div className="w-full h-[10vh] bg-lime-400">
           <TempCloth temperature={temperature} />
         </div>
-        <div className="w-full h-[40vh] bg-red-400">Today cloth Pick</div>
+        <div className="w-full h-[40vh] bg-red-400">
+          <ColorMap />
+        </div>
       </div>
     </section>
   );
