@@ -6,91 +6,120 @@
  * 표기 방식
  * (1) 방사형 그래프
  * (2) 세로형 막대 그래프
+ *
+ * [구현 1]
+ * 1. 배열에 각 색상들로 나열
+ * 2. 배열에 색상을 상의/하의 옷에 대입
+ * 3. 다른 옷도 추가
+ * 4. COLOR 보색 템플릿 생성
+ *
  */
+import shirtsIcon from "../assets/images/shirts.svg";
+import pantsIcon from "../assets/images/pants.png";
+import React from "react";
 
 const ColorMap = () => {
   const colorTable = {
     "A+": [
-      ["#FFFFFF", "#68CAFE"],
-      ["#FFFFFF", "#0570A8"],
-      ["#FFFFFF", "#EDDDB4"],
-      ["#FFFFFF", "#000000"],
-      ["#F5F0DB", "#68CAFE"],
-      ["#F5F0DB", "#EDDDB4"],
-      ["#F5F0DB", "#A10203"],
-      ["#F5F0DB", "#000000"],
-      ["#FECBFB", "#68CAFE"],
-      ["#01205F", "#A10203"],
-      ["#000000", "#000000"],
-      ["#A6A5A6", "#000000"],
+      ["bg-[#FFFFFF]", "bg-[#68CAFE]"],
+      ["bg-[#FFFFFF]", "bg-[#0570A8]"],
+      ["bg-[#FFFFFF]", "bg-[#EDDDB4]"],
+      ["bg-[#FFFFFF]", "bg-[#000000]"],
+      ["bg-[#F5F0DB]", "bg-[#68CAFE]"],
+      ["bg-[#F5F0DB]", "bg-[#EDDDB4]"],
+      ["bg-[#F5F0DB]", "bg-[#A10203]"],
+      ["bg-[#F5F0DB]", "bg-[#000000]"],
+      ["bg-[#FECBFB]", "bg-[#68CAFE]"],
+      ["bg-[#01205F]", "bg-[#A10203]"],
+      ["bg-[#000000]", "bg-[#000000]"],
+      ["bg-[#A6A5A6]", "bg-[#000000]"],
     ],
     A: [
-      ["#FFFFFF", "#034F01"],
-      ["#FFFFFF", "#A10203"],
-      ["#F5F0DB", "#0570A8"],
-      ["#FD0403", "#A10203"],
-      ["#FECBFB", "#0570A8"],
-      ["#FECBFB", "#EDDDB4"],
-      ["#FECBFB", "#000000"],
-      ["#FDBF0F", "#0570A8"],
-      ["#F3EE04", "#68CAFE"],
-      ["#F3EE04", "#0570A8"],
-      ["#F3EE04", "#EDDDB4"],
-      ["#F3EE04", "#A10203"],
-      ["#01A402", "#0570A8"],
-      ["#06B0F1", "#EDDDB4"],
-      ["#06B0F1", "#A10203"],
-      ["#06B0F1", "#000000"],
-      ["#01205F", "#68CAFE"],
-      ["#01205F", "#0570A8"],
-      ["#01205F", "#EDDDB4"],
-      ["#000000", "#0570A8"],
-      ["#000000", "#EDDDB4"],
+      ["bg-[#FFFFFF]", "bg-[#034F01]"],
+      ["bg-[#FFFFFF]", "bg-[#A10203]"],
+      ["bg-[#F5F0DB]", "bg-[#0570A8]"],
+      ["bg-[#FD0403]", "bg-[#A10203]"],
+      ["bg-[#FECBFB]", "bg-[#0570A8]"],
+      ["bg-[#FECBFB]", "bg-[#EDDDB4]"],
+      ["bg-[#FECBFB]", "bg-[#000000]"],
+      ["bg-[#FDBF0F]", "bg-[#0570A8]"],
+      ["bg-[#F3EE04]", "bg-[#68CAFE]"],
+      ["bg-[#F3EE04]", "bg-[#0570A8]"],
+      ["bg-[#F3EE04]", "bg-[#EDDDB4]"],
+      ["bg-[#F3EE04]", "bg-[#A10203]"],
+      ["bg-[#01A402]", "bg-[#0570A8]"],
+      ["bg-[#06B0F1]", "bg-[#EDDDB4]"],
+      ["bg-[#06B0F1]", "bg-[#A10203]"],
+      ["bg-[#06B0F1]", "bg-[#000000]"],
+      ["bg-[#01205F]", "bg-[#68CAFE]"],
+      ["bg-[#01205F]", "bg-[#0570A8]"],
+      ["bg-[#01205F]", "bg-[#EDDDB4]"],
+      ["bg-[#000000]", "bg-[#0570A8]"],
+      ["bg-[#000000]", "bg-[#EDDDB4]"],
     ],
     B: [
-      ["#FD0403", "#EDDDB4"],
-      ["#FD0403", "#000000"],
-      ["#FECBFB", "#034F01"],
-      ["#FECBFB", "#A10203"],
-      ["#FDBF0F", "#68CAFE"],
-      ["#FDBF0F", "#EDDDB4"],
-      ["#FDBF0F", "#A10203"],
-      ["#FDBF0F", "#000000"],
-      ["#F3EE04", "#034F01"],
-      ["#F3EE04", "#000000"],
-      ["#01A402", "#68CAFE"],
-      ["#01A402", "#EDDDB4"],
-      ["#01A402", "#A10203"],
-      ["#01A402", "#000000"],
-      ["#06B0F1", "#0570A8"],
-      ["#01205F", "#034F01"],
-      ["#01205F", "#000000"],
-      ["#000000", "#68CAFE"],
-      ["#000000", "#034F01"],
-      ["#000000", "#A10203"],
-      ["#A6A5A6", "#0570A8"],
-      ["#A6A5A6", "#EDDDB4"],
-      ["#A6A5A6", "#A10203"],
+      ["bg-[#FD0403]", "bg-[#EDDDB4]"],
+      ["bg-[#FD0403]", "bg-[#000000]"],
+      ["bg-[#FECBFB]", "bg-[#034F01]"],
+      ["bg-[#FECBFB]", "bg-[#A10203]"],
+      ["bg-[#FDBF0F]", "bg-[#68CAFE]"],
+      ["bg-[#FDBF0F]", "bg-[#EDDDB4]"],
+      ["bg-[#FDBF0F]", "bg-[#A10203]"],
+      ["bg-[#FDBF0F]", "bg-[#000000]"],
+      ["bg-[#F3EE04]", "bg-[#034F01]"],
+      ["bg-[#F3EE04]", "bg-[#000000]"],
+      ["bg-[#01A402]", "bg-[#68CAFE]"],
+      ["bg-[#01A402]", "bg-[#EDDDB4]"],
+      ["bg-[#01A402]", "bg-[#A10203]"],
+      ["bg-[#01A402]", "bg-[#000000]"],
+      ["bg-[#06B0F1]", "bg-[#0570A8]"],
+      ["bg-[#01205F]", "bg-[#034F01]"],
+      ["bg-[#01205F]", "bg-[#000000]"],
+      ["bg-[#000000]", "bg-[#68CAFE]"],
+      ["bg-[#000000]", "bg-[#034F01]"],
+      ["bg-[#000000]", "bg-[#A10203]"],
+      ["bg-[#A6A5A6]", "bg-[#0570A8]"],
+      ["bg-[#A6A5A6]", "bg-[#EDDDB4]"],
+      ["bg-[#A6A5A6]", "bg-[#A10203]"],
     ],
     C: [
-      ["#FD0403", "#68CAFE"],
-      ["#FD0403", "#0570A8"],
-      ["#FDBF0F", "#034F01"],
-      ["#01A402", "#034F01"],
-      ["#06B0F1", "#68CAFE"],
+      ["bg-[#FD0403]", "bg-[#68CAFE]"],
+      ["bg-[#FD0403]", "bg-[#0570A8]"],
+      ["bg-[#FDBF0F]", "bg-[#034F01]"],
+      ["bg-[#01A402]", "bg-[#034F01]"],
+      ["bg-[#06B0F1]", "bg-[#68CAFE]"],
     ],
     F: [
-      ["#FD0403", "#034F01"],
-      ["#06B0F1", "#034F01"],
-      ["#A6A5A6", "#034F01"],
+      ["bg-[#FD0403]", "bg-[#034F01]"],
+      ["bg-[#06B0F1]", "bg-[#034F01]"],
+      ["bg-[#A6A5A6]", "bg-[#034F01]"],
     ],
   };
   return (
     <div>
-      <ul>
-        <li className={colorTable["A"][2]}>1</li>
-        <li>1</li>
+      <ul className="w-full h-10 flex justify-around items-center bg-slate-500">
+        <li className="hover:bg-gray-200 cursor-pointer">Color</li>
+        <li>Season</li>
+        <li>Prefer</li>
       </ul>
+      <div className="flex justify-center items-center">
+        {colorTable["A+"].map((colors, index) => (
+          <React.Fragment key={index}>
+            <ul className="flex flex-col px-2">
+              <li
+                className={`w-[150px] h-[150px] flex justify-center items-center border-solid border-2 border-black ${colors[0]} my-2`}
+              >
+                {`${colors[0].slice(4, 11)}`}
+              </li>
+              <li
+                className={`w-[150px] h-[150px] flex justify-center items-center border-solid border-2 border-black ${colors[1]}`}
+              >
+                {`${colors[1].slice(4, 11)}`}
+              </li>
+            </ul>
+          </React.Fragment>
+        ))}
+      </div>
     </div>
   );
 };
