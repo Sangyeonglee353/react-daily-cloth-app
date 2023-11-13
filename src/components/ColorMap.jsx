@@ -14,9 +14,15 @@
  * 4. COLOR 보색 템플릿 생성
  *
  */
+import React, { useState } from "react";
 import shirtsIcon from "../assets/images/shirts.svg";
 import pantsIcon from "../assets/images/pants.png";
-import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import { EffectCoverflow, Pagination } from "swiper/modules";
+import "./colorMap.css";
 
 const ColorMap = () => {
   const colorTable = {
@@ -95,30 +101,68 @@ const ColorMap = () => {
       ["bg-[#A6A5A6]", "bg-[#034F01]"],
     ],
   };
+
+  const [tab, setTab] = useState(0);
+
+  const menuList = {
+    menuName: ["Basic", "Season", "Prefer"],
+  };
+
+  const selecMenuHandler = (index) => {
+    setTab(index);
+  };
+
   return (
     <div>
       <ul className="w-full h-10 flex justify-around items-center bg-slate-500">
-        <li className="hover:bg-gray-200 cursor-pointer">Color</li>
-        <li>Season</li>
-        <li>Prefer</li>
+        {menuList["menuName"].map((menu, index) => (
+          <li
+            className="w-1/3 h-full flex justify-center items-center bg-gray-200 cursor-pointer"
+            key={index}
+          >
+            {menu}
+          </li>
+        ))}
       </ul>
       <div className="flex justify-center items-center">
-        {colorTable["A+"].map((colors, index) => (
-          <React.Fragment key={index}>
-            <ul className="flex flex-col px-2">
-              <li
-                className={`w-[150px] h-[150px] flex justify-center items-center border-solid border-2 border-black ${colors[0]} my-2`}
-              >
-                {`${colors[0].slice(4, 11)}`}
-              </li>
-              <li
-                className={`w-[150px] h-[150px] flex justify-center items-center border-solid border-2 border-black ${colors[1]}`}
-              >
-                {`${colors[1].slice(4, 11)}`}
-              </li>
-            </ul>
-          </React.Fragment>
-        ))}
+        <Swiper
+          effect={"coverflow"}
+          grabCursor={true}
+          centeredSlides={true}
+          slidesPerView={"auto"}
+          loop={true} // 무한 반복
+          mousewheel={true} // 마우스 휠
+          coverflowEffect={{
+            rotate: -5, // 회전 각도
+            stretch: 50, // 겹침정도
+            depth: 100, // 깊이감도
+            modifier: 1,
+            slideShadows: true,
+            scale: 1, // 크기
+          }}
+          pagination={true}
+          modules={[EffectCoverflow, Pagination]}
+          className="mySwiper"
+        >
+          {/* <div className="w-[300px]"> */}
+          {colorTable["A+"].map((colors, index) => (
+            <SwiperSlide key={index}>
+              <ul className="w-[150px] h-auto flex flex-col">
+                <li
+                  className={`w-[150px] h-[150px] flex justify-center items-center border-solid border-2 border-black ${colors[0]} my-2 rounded-2xl`}
+                >
+                  {`${colors[0].slice(4, 11)}`}
+                </li>
+                <li
+                  className={`w-[150px] h-[150px] flex justify-center items-center border-solid border-2 border-black ${colors[1]} rounded-2xl`}
+                >
+                  {`${colors[1].slice(4, 11)}`}
+                </li>
+              </ul>
+            </SwiperSlide>
+          ))}
+          {/* </div> */}
+        </Swiper>
       </div>
     </div>
   );
