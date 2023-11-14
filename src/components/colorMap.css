@@ -1,7 +1,8 @@
 .swiper {
   width: 100%;
   padding-top: 50px;
-  padding-bottom: 50px;
+  padding-bottom: 70px;
+  margin: 0 auto;
 }
 
 .swiper-slide {
@@ -17,5 +18,5 @@
 }
 
 .swiper-slide-active {
-  transform: scale(1.1) !important;
+  transform: scale(1.2) !important;
 }

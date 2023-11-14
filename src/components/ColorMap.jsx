@@ -129,15 +129,18 @@ const ColorMap = () => {
           effect={"coverflow"}
           grabCursor={true}
           centeredSlides={true}
-          slidesPerView={"auto"}
+          slidesPerView={7} // 보여지는 슬라이드의 개수: 반응형 적용 필요
           loop={true} // 무한 반복
+          // loopedSlides={5} // 반복 시 균형 조절
+          // centerInsufficientSlides={true}
+          centeredSlidesBounds={true}
           mousewheel={true} // 마우스 휠
           coverflowEffect={{
-            rotate: -5, // 회전 각도
-            stretch: 50, // 겹침정도
+            rotate: 10, // 회전 각도
+            stretch: 10, // 겹침정도
             depth: 100, // 깊이감도
             modifier: 1,
-            slideShadows: true,
+            slideShadows: false,
             scale: 1, // 크기
           }}
           autoplay={{ delay: 1000, disableOnInteraction: false }}
