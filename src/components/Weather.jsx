@@ -425,8 +425,8 @@ const Weather = ({ mapCoord, handleTemperature }) => {
   };
 
   return (
-    <section name="weatherinfo" className="flex w-full h-screen">
-      <div className="w-full h-auto bg-white rounded-md">
+    <section name="weatherinfo" className="flex w-full">
+      <div className="w-full bg-white">
         <div className="w-full flex items-center mt-2 pl-2">
           <div className="flex items-center">
             <img src={weatherLogo} alt="weather_logo" className="w-6 h-6" />

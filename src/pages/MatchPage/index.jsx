@@ -48,12 +48,12 @@ const MatchPage = () => {
     setTemperature(temp);
   };
 
-  useEffect(() => {
-    console.log(
-      "changed lat: " + mapCoord.latitude + " lng: " + mapCoord.longitude
-    );
-    // console.log("changed temp: " + temperature);
-  }, [mapCoord]);
+  // useEffect(() => {
+  //   console.log(
+  //     "changed lat: " + mapCoord.latitude + " lng: " + mapCoord.longitude
+  //   );
+  //   // console.log("changed temp: " + temperature);
+  // }, [mapCoord]);
 
   return (
     <section name="match" className="w-full h-screen flex">
@@ -72,7 +72,7 @@ const MatchPage = () => {
         <div className="w-full h-[10vh] bg-lime-400">
           <TempCloth temperature={temperature} />
         </div>
-        <div className="w-full h-[40vh] bg-red-400">
+        <div className="w-full h-[40vh]">
           <ColorMap />
         </div>
       </div>

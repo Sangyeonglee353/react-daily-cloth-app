@@ -21,7 +21,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
-import { EffectCoverflow, Pagination } from "swiper/modules";
+import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
 import "./colorMap.css";
 
 const ColorMap = () => {
@@ -140,8 +140,9 @@ const ColorMap = () => {
             slideShadows: true,
             scale: 1, // 크기
           }}
+          autoplay={{ delay: 1000, disableOnInteraction: false }}
           pagination={true}
-          modules={[EffectCoverflow, Pagination]}
+          modules={[EffectCoverflow, Pagination, Autoplay]}
           className="mySwiper"
         >
           {/* <div className="w-[300px]"> */}
