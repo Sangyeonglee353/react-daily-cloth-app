@@ -13,6 +13,10 @@
  * 3. 다른 옷도 추가
  * 4. COLOR 보색 템플릿 생성
  *
+ * [추가 기능 구현]
+ * 1. 슬라이드 자동 재생, 중지 기능
+ * 2. A+, A, B, C ,F 선택
+ *
  */
 import React, { useState } from "react";
 import shirtsIcon from "../assets/images/shirts.svg";

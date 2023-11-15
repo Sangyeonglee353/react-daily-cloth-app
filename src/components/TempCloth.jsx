@@ -44,7 +44,7 @@ const TempCloth = ({ temperature }) => {
       <div>
         <ul className="flex">
           {getCloth(temperature).map((item, index) => (
-            <li>{item}</li>
+            <li className="w-[100px] h-[100px] bg-slate-400 mx-5">{item}</li>
           ))}
         </ul>
       </div>
