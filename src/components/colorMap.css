@@ -3,6 +3,7 @@
   padding-top: 50px;
   padding-bottom: 70px;
   margin: 0 auto;
+  z-index: -99;
 }
 
 .swiper-slide {

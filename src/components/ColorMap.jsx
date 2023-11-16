@@ -112,13 +112,15 @@ const ColorMap = () => {
     menuName: ["Basic", "Season", "Prefer"],
   };
 
+  const grades = ["A+", "A", "B", "C", "F"];
+
   const selecMenuHandler = (index) => {
     setTab(index);
   };
 
   return (
     <div>
-      <ul className="w-full h-10 flex justify-around items-center bg-slate-500">
+      {/* <ul className="w-full h-10 flex justify-around items-center bg-slate-500">
         {menuList["menuName"].map((menu, index) => (
           <li
             className="w-1/3 h-full flex justify-center items-center bg-gray-200 cursor-pointer"
@@ -127,7 +129,7 @@ const ColorMap = () => {
             {menu}
           </li>
         ))}
-      </ul>
+      </ul> */}
       <div className="flex justify-center items-center">
         <Swiper
           effect={"coverflow"}
@@ -150,7 +152,7 @@ const ColorMap = () => {
           autoplay={{ delay: 1000, disableOnInteraction: false }}
           pagination={true}
           modules={[EffectCoverflow, Pagination, Autoplay]}
-          className="mySwiper"
+          className="mySwiper z-0"
         >
           {/* <div className="w-[300px]"> */}
           {colorTable["A+"].map((colors, index) => (
@@ -171,6 +173,15 @@ const ColorMap = () => {
           ))}
           {/* </div> */}
         </Swiper>
+        <ul className="absolute right-5 z-2">
+          {grades.map((grade, index) => (
+            <React.Fragment key={index}>
+              <li className="flex justify-center items-center bg-gray-300 w-[10px] h-[10px] rounded-full p-6 my-5 hover:bg-sky-700 cursor-pointer">
+                {grade}
+              </li>
+            </React.Fragment>
+          ))}
+        </ul>
       </div>
     </div>
   );
