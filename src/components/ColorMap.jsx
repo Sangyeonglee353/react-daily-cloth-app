@@ -107,6 +107,7 @@ const ColorMap = () => {
   };
 
   const [tab, setTab] = useState(0);
+  const [gradeIndex, setGradeIndex] = useState(0);
 
   const menuList = {
     menuName: ["Basic", "Season", "Prefer"],
@@ -114,22 +115,14 @@ const ColorMap = () => {
 
   const grades = ["A+", "A", "B", "C", "F"];
 
-  const selecMenuHandler = (index) => {
-    setTab(index);
+  const handleGradeIndex = (idx) => {
+    setGradeIndex(idx);
+    console.log(grades[`${gradeIndex}`]);
+    // console.log(colorTable[grades[`${gradeIndex}`]]);
   };
 
   return (
     <div>
-      {/* <ul className="w-full h-10 flex justify-around items-center bg-slate-500">
-        {menuList["menuName"].map((menu, index) => (
-          <li
-            className="w-1/3 h-full flex justify-center items-center bg-gray-200 cursor-pointer"
-            key={index}
-          >
-            {menu}
-          </li>
-        ))}
-      </ul> */}
       <div className="flex justify-center items-center">
         <Swiper
           effect={"coverflow"}
@@ -137,8 +130,8 @@ const ColorMap = () => {
           centeredSlides={true}
           slidesPerView={7} // 보여지는 슬라이드의 개수: 반응형 적용 필요
           loop={true} // 무한 반복
-          // loopedSlides={5} // 반복 시 균형 조절
-          // centerInsufficientSlides={true}
+          // loopedSlides={3} // 반복 시 균형 조절
+          centerInsufficientSlides={true}
           centeredSlidesBounds={true}
           mousewheel={true} // 마우스 휠
           coverflowEffect={{
@@ -152,10 +145,18 @@ const ColorMap = () => {
           autoplay={{ delay: 1000, disableOnInteraction: false }}
           pagination={true}
           modules={[EffectCoverflow, Pagination, Autoplay]}
-          className="mySwiper z-0"
+          onSwiper={(swiper) => {
+            // swiper 변수를 사용하여 Swiper 인스턴스에 접근할 수 있음
+            swiper.autoplay.start(); // Swiper 로드 시 자동 재생 시작
+          }}
+          onSlideChange={() => {
+            // 슬라이드 변경 이벤트 발생 시 자동 재생 다시 시작
+            const swiper = document.querySelector(".mySwiper").swiper;
+            swiper.autoplay.start();
+          }}
+          className="mySwiper"
         >
-          {/* <div className="w-[300px]"> */}
-          {colorTable["A+"].map((colors, index) => (
+          {colorTable[grades[`${gradeIndex}`]].map((colors, index) => (
             <SwiperSlide key={index}>
               <ul className="w-[150px] h-auto flex flex-col">
                 <li
@@ -171,14 +172,25 @@ const ColorMap = () => {
               </ul>
             </SwiperSlide>
           ))}
-          {/* </div> */}
         </Swiper>
         <ul className="absolute right-5 z-2">
           {grades.map((grade, index) => (
             <React.Fragment key={index}>
-              <li className="flex justify-center items-center bg-gray-300 w-[10px] h-[10px] rounded-full p-6 my-5 hover:bg-sky-700 cursor-pointer">
-                {grade}
-              </li>
+              {index === gradeIndex ? (
+                <li
+                  className="flex justify-center items-center bg-sky-700 w-[10px] h-[10px] rounded-full p-6 my-5 cursor-pointer"
+                  onClick={() => handleGradeIndex(index)}
+                >
+                  {grade}
+                </li>
+              ) : (
+                <li
+                  className="flex justify-center items-center bg-gray-300 w-[10px] h-[10px] rounded-full p-6 my-5 hover:bg-sky-700 cursor-pointer"
+                  onClick={() => handleGradeIndex(index)}
+                >
+                  {grade}
+                </li>
+              )}
             </React.Fragment>
           ))}
         </ul>
