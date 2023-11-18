@@ -257,7 +257,7 @@ const KakaoMap = ({ handleMapCoord }) => {
   }, [coord]);
 
   return (
-    <section name="kakaomap" className="w-full h-autofull flex relative">
+    <section name="kakaomap" className="w-full flex relative">
       {/* 콘텐츠 */}
       <Script
         url={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_API_KEY}&autoload=false&libraries=services`}

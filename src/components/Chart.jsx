@@ -138,7 +138,7 @@ const Chart = (props) => {
     }
   }, [props.weatherData]);
   return (
-    <div className="w-full h-full">
+    <div className="flex justify-center w-full h-full">
       <Line data={data} options={options} />
     </div>
   );

@@ -39,7 +39,7 @@ const TempCloth = ({ temperature }) => {
   };
 
   return (
-    <div className="w-full h-full flex justify-center items-center">
+    <div className="w-full h-[150px] flex justify-center items-center">
       {/* <div>현재 온도: {temperature} ℃</div> */}
       <div>
         <ul className="flex">

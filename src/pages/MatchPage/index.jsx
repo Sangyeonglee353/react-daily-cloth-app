@@ -56,9 +56,9 @@ const MatchPage = () => {
   // }, [mapCoord]);
 
   return (
-    <section name="match" className="w-full h-screen flex">
-      <div className="w-full h-full flex flex-col justify-center max-w-screen-lg p-4 mx-auto">
-        <div className="w-full h-[60vh] md:h-[30vh] flex flex-col md:flex-row">
+    <section name="match" className="w-full min-h-[1000px] flex ">
+      <div className="w-full h-full flex flex-col justify-center max-w-screen-lg px-4 mx-auto mt-[100px]">
+        <div className="w-full min-h-[350px] md:h-[30vh] flex flex-col md:flex-row bg-blue-800">
           <div className="w-full md:w-1/2 h-full flex bg-gray-500">
             <KakaoMap handleMapCoord={handleMapCoord} />
           </div>
@@ -69,10 +69,10 @@ const MatchPage = () => {
             />
           </div>
         </div>
-        <div className="w-full h-[10vh] bg-lime-400">
+        <div className="w-full h-[150px] bg-lime-400">
           <TempCloth temperature={temperature} />
         </div>
-        <div className="w-full h-[40vh]">
+        <div className="w-full h-[40vh] relative">
           <ColorMap />
         </div>
       </div>
