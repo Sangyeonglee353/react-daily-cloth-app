@@ -123,49 +123,84 @@ const ColorMap = () => {
 
   return (
     <div>
+      <ul className="flex justify-center mt-2 z-2">
+        {grades.map((grade, index) => (
+          <React.Fragment key={index}>
+            {index === gradeIndex ? (
+              <li
+                className="flex justify-center items-center bg-sky-700 w-[10px] h-[10px] rounded-full p-6 mx-5 cursor-pointer"
+                onClick={() => handleGradeIndex(index)}
+              >
+                {grade}
+              </li>
+            ) : (
+              <li
+                className="flex justify-center items-center bg-gray-300 w-[10px] h-[10px] rounded-full p-6 mx-5 hover:bg-sky-700 cursor-pointer"
+                onClick={() => handleGradeIndex(index)}
+              >
+                {grade}
+              </li>
+            )}
+          </React.Fragment>
+        ))}
+      </ul>
       <div className="flex justify-center items-center">
         <Swiper
           effect={"coverflow"}
           grabCursor={true}
-          centeredSlides={true}
-          slidesPerView={7} // 보여지는 슬라이드의 개수: 반응형 적용 필요
-          loop={true} // 무한 반복
+          centeredSlides={"auto"}
+          slidesPerView={3} // 보여지는 슬라이드의 개수: 반응형 적용 필요
+          breakpoints={{
+            // 화면 크기에 따라 슬라이드 개수 조정
+            768: {
+              slidesPerView: 7,
+              coverflowEffect: {
+                rotate: 10, // 회전 각도
+                stretch: 10, // 겹침정도
+                depth: 100, // 깊이감도
+                modifier: 1,
+                slideShadows: false,
+                scale: 1, // 크기
+              },
+            },
+          }}
           // loopedSlides={3} // 반복 시 균형 조절
           centerInsufficientSlides={true}
           centeredSlidesBounds={true}
           mousewheel={true} // 마우스 휠
           coverflowEffect={{
             rotate: 10, // 회전 각도
-            stretch: 10, // 겹침정도
+            stretch: 180, // 겹침정도
             depth: 100, // 깊이감도
-            modifier: 1,
+            modifier: 0.5, // 효과강도(0~1)
             slideShadows: false,
             scale: 1, // 크기
           }}
           autoplay={{ delay: 1000, disableOnInteraction: false }}
           pagination={true}
-          modules={[EffectCoverflow, Pagination, Autoplay]}
-          onSwiper={(swiper) => {
-            // swiper 변수를 사용하여 Swiper 인스턴스에 접근할 수 있음
-            swiper.autoplay.start(); // Swiper 로드 시 자동 재생 시작
-          }}
-          onSlideChange={() => {
-            // 슬라이드 변경 이벤트 발생 시 자동 재생 다시 시작
-            const swiper = document.querySelector(".mySwiper").swiper;
-            swiper.autoplay.start();
-          }}
+          modules={[EffectCoverflow, Pagination]}
+          // modules={[EffectCoverflow, Pagination, Autoplay]} // 오토 플레이
+          // onSwiper={(swiper) => {
+          //   // swiper 변수를 사용하여 Swiper 인스턴스에 접근할 수 있음
+          //   swiper.autoplay.start(); // Swiper 로드 시 자동 재생 시작
+          // }}
+          // onSlideChange={() => {
+          //   // 슬라이드 변경 이벤트 발생 시 자동 재생 다시 시작
+          //   const swiper = document.querySelector(".mySwiper").swiper;
+          //   swiper.autoplay.start();
+          // }}
           className="mySwiper"
         >
           {colorTable[grades[`${gradeIndex}`]].map((colors, index) => (
             <SwiperSlide key={index}>
-              <ul className="w-[150px] h-auto flex flex-col">
+              <ul className="w-[100px] md:w-[150px] h-auto flex flex-col">
                 <li
-                  className={`w-[150px] h-[150px] flex justify-center items-center border-solid border-2 border-black ${colors[0]} my-2 rounded-2xl`}
+                  className={`w-[100px] h-[100px] md:w-[150px] md:h-[150px] flex justify-center items-center border-solid border-2 border-black ${colors[0]} my-2 rounded-2xl`}
                 >
                   {`${colors[0].slice(4, 11)}`}
                 </li>
                 <li
-                  className={`w-[150px] h-[150px] flex justify-center items-center border-solid border-2 border-black ${colors[1]} rounded-2xl`}
+                  className={`w-[100px] h-[100px] md:w-[150px] md:h-[150px] flex justify-center items-center border-solid border-2 border-black ${colors[1]} rounded-2xl`}
                 >
                   {`${colors[1].slice(4, 11)}`}
                 </li>
@@ -173,27 +208,6 @@ const ColorMap = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <ul className="absolute right-5 z-2">
-          {grades.map((grade, index) => (
-            <React.Fragment key={index}>
-              {index === gradeIndex ? (
-                <li
-                  className="flex justify-center items-center bg-sky-700 w-[10px] h-[10px] rounded-full p-6 my-5 cursor-pointer"
-                  onClick={() => handleGradeIndex(index)}
-                >
-                  {grade}
-                </li>
-              ) : (
-                <li
-                  className="flex justify-center items-center bg-gray-300 w-[10px] h-[10px] rounded-full p-6 my-5 hover:bg-sky-700 cursor-pointer"
-                  onClick={() => handleGradeIndex(index)}
-                >
-                  {grade}
-                </li>
-              )}
-            </React.Fragment>
-          ))}
-        </ul>
       </div>
     </div>
   );

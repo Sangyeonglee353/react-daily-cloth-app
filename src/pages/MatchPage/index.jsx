@@ -72,7 +72,7 @@ const MatchPage = () => {
         <div className="w-full h-[150px] bg-lime-400">
           <TempCloth temperature={temperature} />
         </div>
-        <div className="w-full h-[40vh] relative">
+        <div className="w-full h-auto relative">
           <ColorMap />
         </div>
       </div>
