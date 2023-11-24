@@ -128,14 +128,14 @@ const ColorMap = () => {
           <React.Fragment key={index}>
             {index === gradeIndex ? (
               <li
-                className="flex justify-center items-center bg-sky-700 w-[10px] h-[10px] rounded-full p-6 mx-5 cursor-pointer"
+                className="flex justify-center items-center bg-[#7FF5F2] w-[10px] h-[10px] rounded-full p-6 mx-5 cursor-pointer"
                 onClick={() => handleGradeIndex(index)}
               >
                 {grade}
               </li>
             ) : (
               <li
-                className="flex justify-center items-center bg-gray-300 w-[10px] h-[10px] rounded-full p-6 mx-5 hover:bg-sky-700 cursor-pointer"
+                className="flex justify-center items-center bg-gray-300 w-[10px] h-[10px] rounded-full p-6 mx-5 hover:bg-[#7FF5F2] cursor-pointer"
                 onClick={() => handleGradeIndex(index)}
               >
                 {grade}

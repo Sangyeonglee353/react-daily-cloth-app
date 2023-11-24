@@ -64,7 +64,7 @@ const TempCloth = ({ temperature }) => {
       <div className="flex flex-col justify-center items-center">
         <img
           src={clothImages[getCloth(temperature)]}
-          className="w-[50%]"
+          className="w-[50%] mt-5"
           alt="img"
         />
         <ul className="flex">
