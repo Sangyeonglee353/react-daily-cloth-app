@@ -102,7 +102,7 @@ const Chart = (props) => {
         type: "linear",
         position: "left",
         grid: { display: false },
-        min: -5,
+        min: -25,
         max: 25,
       },
       y2: {
