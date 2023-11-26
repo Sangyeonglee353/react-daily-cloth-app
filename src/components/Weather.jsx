@@ -172,8 +172,8 @@ const Weather = ({ mapCoord, handleTemperature }) => {
       setXhr(xhr);
 
       const url =
-        // "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst"; /*URL: 초단기실황예보*/
-        "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst"; /*URL: 초단기예보*/
+        // "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst"; /*URL: 초단기실황예보*/
+        "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst"; /*URL: 초단기예보*/
       const queryParams = new URLSearchParams();
       queryParams.append("serviceKey", WEATHER_API_KEY); // Decoding Key를 써야함!
       queryParams.append("pageNo", "1");
