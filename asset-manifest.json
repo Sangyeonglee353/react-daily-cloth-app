@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/react-daily-cloth-app/static/css/main.4d341165.css",
+    "main.js": "/react-daily-cloth-app/static/js/main.6eabb904.js",
+    "static/js/787.06d5b684.chunk.js": "/react-daily-cloth-app/static/js/787.06d5b684.chunk.js",
+    "static/media/home_bg.jpg": "/react-daily-cloth-app/static/media/home_bg.2f038937bab1b9ca91f1.jpg",
+    "static/media/about_bg.jpg": "/react-daily-cloth-app/static/media/about_bg.f20768e64d9e3e3f16ea.jpg",
+    "static/media/cloudy.png": "/react-daily-cloth-app/static/media/cloudy.b06ddaace9d6ec3ea522.png",
+    "static/media/sun.png": "/react-daily-cloth-app/static/media/sun.434d86be57af2f85311c.png",
+    "static/media/snow.png": "/react-daily-cloth-app/static/media/snow.f2233c1c5892d7e55aff.png",
+    "static/media/google.svg": "/react-daily-cloth-app/static/media/google.b596752253d8523d78d4a2691564e4b4.svg",
+    "static/media/apple.svg": "/react-daily-cloth-app/static/media/apple.e3713dc89ad84e690ab38eae55922d3e.svg",
+    "static/media/rain.png": "/react-daily-cloth-app/static/media/rain.ce70ffbf7ed83bb85860.png",
+    "index.html": "/react-daily-cloth-app/index.html",
+    "static/media/shirts.svg": "/react-daily-cloth-app/static/media/shirts.bfd3dbb22fe6e1f37dea2b7ac58b3552.svg",
+    "main.4d341165.css.map": "/react-daily-cloth-app/static/css/main.4d341165.css.map",
+    "main.6eabb904.js.map": "/react-daily-cloth-app/static/js/main.6eabb904.js.map",
+    "787.06d5b684.chunk.js.map": "/react-daily-cloth-app/static/js/787.06d5b684.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4d341165.css",
+    "static/js/main.6eabb904.js"
+  ]
+}
