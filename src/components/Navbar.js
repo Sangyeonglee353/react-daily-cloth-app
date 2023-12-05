@@ -37,10 +37,12 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="hidden pr-4 md:flex">
-          <button className="mr-4 text-black bg-transparent border-none">
+          <button className="px-8 py-3 mr-4 text-black bg-transparent border border-slate-600 hover:bg-slate-600 hover:text-white rounded-md">
             Sign In
           </button>
-          <button className="px-8 py-3">Sign Up</button>
+          <button className="px-8 py-3 text-white border bg-slate-600 border-slate-600 hover:bg-transparent hover:text-slate-600 rounded-md">
+            Sign Up
+          </button>
         </div>
         <div className="mr-4 md:hidden" onClick={() => setNav(!nav)}>
           {!nav ? (
@@ -94,10 +96,12 @@ const Navbar = () => {
         </li>
 
         <div className="flex flex-col my-4">
-          <button className="px-8 py-3 mb-4 text-slate-600 bg-transparent">
+          <button className="px-8 py-3 mb-4 text-slate-600 bg-transparent border border-slate-600 hover:bg-slate-600 hover:text-white rounded-md">
             Sign In
           </button>
-          <button className="px-8 py-3">Sign Up</button>
+          <button className="px-8 py-3 text-white border bg-slate-600 border-slate-600 hover:bg-transparent hover:text-slate-600 rounded-md">
+            Sign Up
+          </button>
         </div>
       </ul>
     </nav>

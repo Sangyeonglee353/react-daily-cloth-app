@@ -278,7 +278,10 @@ const KakaoMap = ({ handleMapCoord }) => {
             className="h-full px-2"
             placeholder="Search..."
           />
-          <button className="ml-2 px-2" onClick={handleSearch}>
+          <button
+            className="ml-2 px-2 text-white border bg-slate-600 border-slate-600 hover:bg-transparent hover:text-slate-600 rounded-md"
+            onClick={handleSearch}
+          >
             검색
           </button>
           <span className="absolute font-bold right-2 leading-8">

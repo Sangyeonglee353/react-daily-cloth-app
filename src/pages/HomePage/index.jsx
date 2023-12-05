@@ -21,7 +21,7 @@ const HomePage = () => {
             Recommend Daily Cloth
           </h1>
           <p className="text-2xl">Alook is the best recommend platform</p>
-          <button className="py-3 px-6 sm:w-[60%] my-4">
+          <button className="py-3 px-6 sm:w-[60%] my-4 text-white border bg-slate-600 border-slate-600 hover:bg-transparent hover:text-slate-600 rounded-md">
             <Link to="match">Get Started</Link>
           </button>
         </div>
