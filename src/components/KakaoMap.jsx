@@ -171,6 +171,7 @@ const KakaoMap = ({ handleMapCoord }) => {
       presentMarker(37.5665, 126.978);
     }
   };
+
   // 🎇 카카오맵 표시 함수
   const getKakaoMapData = () => {
     try {
