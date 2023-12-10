@@ -1,5 +1,6 @@
 /* 현재 내가 보유하고 있는 옷장 페이지 */
 import ClosetButton from "../../components/ClosetButton";
+import ClosetItem from "../../components/ClosetItem";
 
 const ClosetPage = () => {
   return (
@@ -21,22 +22,18 @@ const ClosetPage = () => {
           <div className="w-full h-[1000px] flex bg-orange-300">
             {/* 옷 나열 리스트 Area */}
             <ul className="w-full h-auto flex flex-wrap justify-around items-center">
-              <div className="w-[200px] h-[200px] bg-gray-300 rounded-md"></div>
-              <div className="w-[200px] h-[200px] bg-gray-300 rounded-md"></div>
-              <div className="w-[200px] h-[200px] bg-gray-300 rounded-md"></div>
-              <div className="w-[200px] h-[200px] bg-gray-300 rounded-md"></div>
-              <div className="w-[200px] h-[200px] bg-gray-300 rounded-md"></div>
-              <div className="w-[200px] h-[200px] bg-gray-300 rounded-md"></div>
-              <div className="w-[200px] h-[200px] bg-gray-300 rounded-md"></div>
-              <div className="w-[200px] h-[200px] bg-gray-300 rounded-md"></div>
-              <div className="w-[200px] h-[200px] bg-gray-300 rounded-md"></div>
-              <div className="w-[200px] h-[200px] bg-gray-300 rounded-md"></div>
-              <div className="w-[200px] h-[200px] bg-gray-300 rounded-md"></div>
-              <div className="w-[200px] h-[200px] bg-gray-300 rounded-md"></div>
-              <div className="w-[200px] h-[200px] bg-gray-300 rounded-md"></div>
-              <div className="w-[200px] h-[200px] bg-gray-300 rounded-md"></div>
-              <div className="w-[200px] h-[200px] bg-gray-300 rounded-md"></div>
-              <div className="w-[200px] h-[200px] bg-gray-300 rounded-md"></div>
+              <ClosetItem />
+              <ClosetItem />
+              <ClosetItem />
+              <ClosetItem />
+              <ClosetItem />
+              <ClosetItem />
+              <ClosetItem />
+              <ClosetItem />
+              <ClosetItem />
+              <ClosetItem />
+              <ClosetItem />
+              <ClosetItem />
             </ul>
           </div>
         </div>
