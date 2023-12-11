@@ -1,20 +1,40 @@
 import React, { useState } from "react";
 
-const ClosetButton = ({ menuName }) => {
+const ClosetButton = ({ name }) => {
   const [clicked, setClicked] = useState(false);
+  const [color, setColor] = useState({
+    "bg-color": "bg-white",
+    "font-color": "black",
+  });
 
   const handleMenuClick = () => {
     setClicked(!clicked);
     console.log("clicked: ", clicked);
+
+    if (color["bg-color"] === "bg-white") {
+      setColor((prev) => ({
+        "bg-color": "bg-blue-500",
+        "font-color": "text-white",
+      }));
+    } else {
+      setColor((prev) => ({
+        "bg-color": "bg-white",
+        "font-color": "text-black",
+      }));
+    }
   };
 
   return (
+    // 메뉴 토글 버튼
     <button
-      className="flex justify-center items-center w-10 h-3 px-8 py-4 bg-stone-500 border rounded-md"
+      className={`flex justify-center items-center w-10 h-3 px-8 py-4 border rounded-md ${color["bg-color"]} ${color["font-color"]}`}
       onClick={handleMenuClick}
     >
-      menu
+      {name}
     </button>
+    // <button className={`${color}`} onClick={handleMenuClick}>
+    //   {name}
+    // </button>
   );
 };
 

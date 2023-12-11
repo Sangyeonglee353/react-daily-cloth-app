@@ -25,7 +25,7 @@ import Weather from "../../components/Weather";
 import KakaoMap from "../../components/KakaoMap";
 import TempCloth from "../../components/TempCloth";
 import ColorMap from "../../components/ColorMap";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const MatchPage = () => {
   const [mapCoord, setMapCoord] = useState({
