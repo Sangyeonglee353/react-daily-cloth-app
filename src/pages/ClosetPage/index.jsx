@@ -3,7 +3,15 @@ import ClosetButton from "../../components/ClosetButton";
 import ClosetItem from "../../components/ClosetItem";
 
 const ClosetPage = () => {
-  const menuList = ["TOP", "Pants", "Outer", "Shoes"];
+  const menuList = [
+    "TOP",
+    "Pants",
+    "Outer",
+    "Shoes",
+    "Sneakers",
+    "Bag",
+    "Headwear",
+  ];
   return (
     <section name="closet" className="w-full min-h-[1000px] flex ">
       <div className="w-full h-full flex flex-col justify-center max-w-screen-lg px-4 mx-auto mt-[100px]">
