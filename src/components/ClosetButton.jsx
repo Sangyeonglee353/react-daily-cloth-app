@@ -27,7 +27,7 @@ const ClosetButton = ({ name }) => {
   return (
     // 메뉴 토글 버튼
     <button
-      className={`flex justify-center items-center w-10 h-3 px-8 py-4 border rounded-md ${color["bg-color"]} ${color["font-color"]}`}
+      className={`flex justify-center items-center w-10 h-3 px-10 py-4 border rounded-md ${color["bg-color"]} ${color["font-color"]}`}
       onClick={handleMenuClick}
     >
       {name}

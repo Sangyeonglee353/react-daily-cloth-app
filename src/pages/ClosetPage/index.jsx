@@ -22,16 +22,9 @@ const ClosetPage = () => {
               {menuList.map((menuItem, index) => (
                 <ClosetButton key={index} name={menuItem} />
               ))}
-              {/* <ClosetButton name={menuList[0]} />
-              <ClosetButton name={menuList[1]} />
-              <ClosetButton name={menuList[2]} />
-              <ClosetButton name={menuList[3]} />
-              <ClosetButton name={menuList[0]} />
-              <ClosetButton name={menuList[0]} />
-              <ClosetButton name={menuList[0]} /> */}
             </ul>
           </div>
-          <div className="w-full h-[1000px] flex bg-orange-300">
+          <div className="w-full h-full flex bg-orange-300 overflow-auto">
             {/* 옷 나열 리스트 Area */}
             <ul className="w-full h-auto flex flex-wrap justify-around items-center">
               {Array(12)
