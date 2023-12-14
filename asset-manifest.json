@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-daily-cloth-app/static/css/main.4d341165.css",
-    "main.js": "/react-daily-cloth-app/static/js/main.bb3b2fd7.js",
+    "main.css": "/react-daily-cloth-app/static/css/main.4c21c14c.css",
+    "main.js": "/react-daily-cloth-app/static/js/main.37079e91.js",
     "static/js/787.06d5b684.chunk.js": "/react-daily-cloth-app/static/js/787.06d5b684.chunk.js",
     "static/media/home_bg.jpg": "/react-daily-cloth-app/static/media/home_bg.2f038937bab1b9ca91f1.jpg",
     "static/media/about_bg.jpg": "/react-daily-cloth-app/static/media/about_bg.f20768e64d9e3e3f16ea.jpg",
@@ -13,12 +13,12 @@
     "static/media/rain.png": "/react-daily-cloth-app/static/media/rain.ce70ffbf7ed83bb85860.png",
     "index.html": "/react-daily-cloth-app/index.html",
     "static/media/shirts.svg": "/react-daily-cloth-app/static/media/shirts.bfd3dbb22fe6e1f37dea2b7ac58b3552.svg",
-    "main.4d341165.css.map": "/react-daily-cloth-app/static/css/main.4d341165.css.map",
-    "main.bb3b2fd7.js.map": "/react-daily-cloth-app/static/js/main.bb3b2fd7.js.map",
+    "main.4c21c14c.css.map": "/react-daily-cloth-app/static/css/main.4c21c14c.css.map",
+    "main.37079e91.js.map": "/react-daily-cloth-app/static/js/main.37079e91.js.map",
     "787.06d5b684.chunk.js.map": "/react-daily-cloth-app/static/js/787.06d5b684.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4d341165.css",
-    "static/js/main.bb3b2fd7.js"
+    "static/css/main.4c21c14c.css",
+    "static/js/main.37079e91.js"
   ]
 }
