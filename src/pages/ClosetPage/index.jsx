@@ -36,7 +36,7 @@ const ClosetPage = () => {
               ))}
             </ul>
           </div>
-          <div className="w-full h-full flex bg-orange-300 overflow-auto">
+          <div className="w-full h-full flex bg-orange-300 overflow-auto p-4">
             {/* 옷 나열 리스트 Area */}
             {/* <ul className="w-full grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid=cols-3 lg:grid-cols-5 justify-items-center">
               {Array(12)
