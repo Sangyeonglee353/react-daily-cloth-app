@@ -1,7 +1,15 @@
-/* 현재 내가 보유하고 있는 옷장 페이지 */
+/* 현재 내가 보유하고 있는 옷장 페이지
+ *
+ * [참고사항]
+ * - imageListGruop: 전체 옷 경로 배열
+ * - imageList: 특정 종류 옷 경로 배열
+ * - image: 해당 옷 배열
+ */
+
 import ClosetImages from "../../api/ClosetImages";
 import ClosetButton from "../../components/ClosetButton";
 import ClosetItem from "../../components/ClosetItem";
+import ClosetItemList from "../../components/ClosetItemList";
 import { getImages } from "../../api/requests";
 import { useEffect, useState } from "react";
 
@@ -17,11 +25,12 @@ const ClosetPage = () => {
     "Headwear",
   ];
 
-  const [imageList, setImageList] = useState([]);
+  const [imageListGroup, setImageListGroup] = useState([]);
 
   useEffect(() => {
-    const data = getImages("../assets/images/closet/top");
-    setImageList(data);
+    // const data = GetImages("../assets/images/closet/top");
+    const data = getImages("top");
+    setImageListGroup(data);
   }, []);
 
   return (
@@ -37,22 +46,19 @@ const ClosetPage = () => {
             </ul>
           </div>
           <div className="w-full h-full flex bg-orange-300 overflow-auto p-4">
-            {/* 옷 나열 리스트 Area */}
-            {/* <ul className="w-full grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid=cols-3 lg:grid-cols-5 justify-items-center">
-              {Array(12)
-                .fill()
-                .map((_, index) => (
-                  <ClosetItem key={index} />
-                ))}
-            </ul> */}
+            {/* 옷 나열 리스트 Area*/}
+            {/* <ul className="w-full grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid=cols-3 lg:grid-cols-5 justify-items-center"> */}
             <ul className="w-full grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid=cols-3 lg:grid-cols-5 justify-items-center">
-              {console.log("imageList: ", imageList)}
-              {imageList.length != 0 &&
-                imageList.map((image, index) => (
-                  <ClosetItem key={index} image={image} />
+              {console.log("imageList: ", imageListGroup)}
+              {imageListGroup.length !== 0 &&
+                imageListGroup.map((_, idx) => (
+                  <ClosetItemList
+                    key={idx}
+                    imageList={imageListGroup[`${idx}`]}
+                    menu={menuList[`${idx + 1}`].toLowerCase()}
+                  />
                 ))}
             </ul>
-            {/* <ClosetImages /> */}
           </div>
         </div>
       </div>

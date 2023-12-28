@@ -1,12 +1,11 @@
 import React from "react";
 
-const ClosetItem = (props) => {
+const ClosetItem = ({ image, menu }) => {
   return (
     <li className="w-full h-[200px] flex justify-center bg-gray-300 rounded-md">
-      {/* {console.log("ClosetItem Data: ", props.image.src)} */}
       <img
-        src={require(`../assets/images/closet/top/${props.image.src}`)}
-        alt={props.image.name}
+        src={require(`../assets/images/closet/${image.type}/${image.src}`)}
+        alt={image.name}
         className="bg-cover h-full"
       />
     </li>
