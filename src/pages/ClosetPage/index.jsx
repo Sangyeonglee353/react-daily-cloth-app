@@ -48,7 +48,7 @@ const ClosetPage = () => {
           <div className="w-full h-full flex bg-orange-300 overflow-auto p-4">
             {/* 옷 나열 리스트 Area*/}
             {/* <ul className="w-full grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid=cols-3 lg:grid-cols-5 justify-items-center"> */}
-            <ul className="w-full grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid=cols-3 lg:grid-cols-5 justify-items-center">
+            <ul className="w-full grid grid-cols-1 gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 justify-items-center">
               {console.log("imageList: ", imageListGroup)}
               {imageListGroup.length !== 0 &&
                 imageListGroup.map((_, idx) => (

@@ -1,3 +1,4 @@
+/* 각각의 이미지 컴포넌트 */
 import React from "react";
 
 const ClosetItem = ({ image, menu }) => {
