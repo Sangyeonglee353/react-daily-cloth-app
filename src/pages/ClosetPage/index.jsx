@@ -27,11 +27,28 @@ const ClosetPage = () => {
 
   const [imageListGroup, setImageListGroup] = useState([]);
 
+  const [menuStatus, setMenuStatus] = useState({
+    status1: true, // top
+    status2: true, // pants
+    status3: true, // outer
+    status4: true, // shoes
+    status5: true, // sneakers
+    status6: true, // bag
+    status7: true, // headwear
+  });
+
+  const handleMenuStatus = (status) => {
+    setMenuStatus((prevMenuStatus) => ({
+      ...prevMenuStatus,
+      [status]: !prevMenuStatus[status],
+    }));
+  };
+
   useEffect(() => {
     // const data = GetImages("../assets/images/closet/top");
     const data = getImages("top");
     setImageListGroup(data);
-  }, []);
+  }, [menuStatus]);
 
   return (
     <section name="closet" className="w-full min-h-[1000px] flex ">
@@ -41,7 +58,12 @@ const ClosetPage = () => {
             {/* 메뉴 Area */}
             <ul className="w-full flex justify-around">
               {menuList.map((menuItem, index) => (
-                <ClosetButton key={index} name={menuItem} />
+                <ClosetButton
+                  key={index}
+                  name={menuItem}
+                  status={menuStatus["status" + (index + 1)]}
+                  handleStatus={handleMenuStatus}
+                />
               ))}
             </ul>
           </div>
@@ -51,13 +73,16 @@ const ClosetPage = () => {
             <ul className="w-full grid grid-cols-1 gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 justify-items-center">
               {console.log("imageList: ", imageListGroup)}
               {imageListGroup.length !== 0 &&
-                imageListGroup.map((_, idx) => (
-                  <ClosetItemList
-                    key={idx}
-                    imageList={imageListGroup[`${idx}`]}
-                    menu={menuList[`${idx + 1}`].toLowerCase()}
-                  />
-                ))}
+                imageListGroup.map(
+                  (_, idx) =>
+                    menuStatus["status" + (idx + 1)] && (
+                      <ClosetItemList
+                        key={idx}
+                        imageList={imageListGroup[`${idx}`]}
+                        menu={menuList[`${idx + 1}`].toLowerCase()}
+                      />
+                    )
+                )}
             </ul>
           </div>
         </div>

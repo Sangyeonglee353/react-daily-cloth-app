@@ -1,15 +1,23 @@
+/* 옷장_메뉴 버튼
+ * [기능]
+ * 1. 버튼 클릭 시 색상 변경
+ * 2. 버튼 클릭 시 필터링
+ *
+ *
+ */
+
 import React, { useState } from "react";
 
-const ClosetButton = ({ name }) => {
-  const [clicked, setClicked] = useState(false);
+const ClosetButton = ({ name, status, handleStatus }) => {
+  const [clicked, setClicked] = useState({ status });
   const [color, setColor] = useState({
     "bg-color": "bg-white",
     "font-color": "black",
   });
 
   const handleMenuClick = () => {
-    setClicked(!clicked);
-    console.log("clicked: ", clicked);
+    // setClicked(!clicked);
+    handleStatus(status);
 
     if (color["bg-color"] === "bg-white") {
       setColor((prev) => ({
@@ -24,6 +32,8 @@ const ClosetButton = ({ name }) => {
     }
   };
 
+  // 1. all 클릭 시 전체 on
+  // 2. top 클릭 시 top on
   return (
     // 메뉴 토글 버튼
     <button
@@ -32,9 +42,6 @@ const ClosetButton = ({ name }) => {
     >
       {name}
     </button>
-    // <button className={`${color}`} onClick={handleMenuClick}>
-    //   {name}
-    // </button>
   );
 };
 
