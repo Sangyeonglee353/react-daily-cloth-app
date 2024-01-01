@@ -37,16 +37,31 @@ const ClosetPage = () => {
     status7: true, // headwear
   });
 
-  const handleMenuStatus = (status) => {
+  const handleAllMenuStatus = (status) => {
     setMenuStatus((prevMenuStatus) => ({
-      ...prevMenuStatus,
-      [status]: !prevMenuStatus[status],
+      status1: status, // top
+      status2: status, // pants
+      status3: status, // outer
+      status4: status, // shoes
+      status5: status, // sneakers
+      status6: status, // bag
+      status7: status, // headwear
     }));
+  };
+
+  const handleMenuStatus = (status) => {
+    setMenuStatus((prevMenuStatus) => {
+      const updatedMenuStatus = {};
+      for (const key in prevMenuStatus) {
+        updatedMenuStatus[key] = key === status ? !prevMenuStatus[key] : false;
+      }
+      return updatedMenuStatus;
+    });
   };
 
   useEffect(() => {
     // const data = GetImages("../assets/images/closet/top");
-    const data = getImages("top");
+    const data = getImages("top"); // 수정 필요
     setImageListGroup(data);
   }, [menuStatus]);
 
@@ -57,21 +72,33 @@ const ClosetPage = () => {
           <div className="w-full h-[80px] flex items-center border border-solid border-black rounded-t-2xl">
             {/* 메뉴 Area */}
             <ul className="w-full flex justify-around">
-              {menuList.map((menuItem, index) => (
-                <ClosetButton
-                  key={index}
-                  name={menuItem}
-                  status={menuStatus["status" + (index + 1)]}
-                  handleStatus={handleMenuStatus}
-                />
-              ))}
+              {menuList.map((menuItem, index) =>
+                index === 0 ? ( // All인 경우, 수정 필요
+                  <ClosetButton
+                    key={index}
+                    index={index}
+                    name={menuItem}
+                    status={menuStatus["status" + (index + 1)]}
+                    handleStatus={handleMenuStatus}
+                  />
+                ) : (
+                  // 그 외 경우
+                  <ClosetButton
+                    key={index}
+                    index={index}
+                    name={menuItem}
+                    status={menuStatus["status" + (index + 1)]}
+                    handleStatus={handleMenuStatus}
+                  />
+                )
+              )}
             </ul>
           </div>
           <div className="w-full h-full flex bg-orange-300 overflow-auto p-4">
             {/* 옷 나열 리스트 Area*/}
             {/* <ul className="w-full grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid=cols-3 lg:grid-cols-5 justify-items-center"> */}
             <ul className="w-full grid grid-cols-1 gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 justify-items-center">
-              {console.log("imageList: ", imageListGroup)}
+              {console.log("menuStatus: ", menuStatus)}
               {imageListGroup.length !== 0 &&
                 imageListGroup.map(
                   (_, idx) =>
