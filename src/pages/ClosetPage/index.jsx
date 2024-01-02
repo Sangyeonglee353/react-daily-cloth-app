@@ -28,6 +28,7 @@ const ClosetPage = () => {
   const [imageListGroup, setImageListGroup] = useState([]);
 
   const [menuStatus, setMenuStatus] = useState({
+    status0: true, // all
     status1: true, // top
     status2: true, // pants
     status3: true, // outer
@@ -39,6 +40,7 @@ const ClosetPage = () => {
 
   const handleAllMenuStatus = (status) => {
     setMenuStatus((prevMenuStatus) => ({
+      status0: status, // all
       status1: status, // top
       status2: status, // pants
       status3: status, // outer
@@ -52,6 +54,8 @@ const ClosetPage = () => {
   const handleMenuStatus = (status) => {
     setMenuStatus((prevMenuStatus) => {
       const updatedMenuStatus = {};
+      // 전체 조건에 해당하는 조건 추가
+      // 조건: status0: true인 경우, 클릭된 status ? true : false
       for (const key in prevMenuStatus) {
         updatedMenuStatus[key] = key === status ? !prevMenuStatus[key] : false;
       }
@@ -72,26 +76,17 @@ const ClosetPage = () => {
           <div className="w-full h-[80px] flex items-center border border-solid border-black rounded-t-2xl">
             {/* 메뉴 Area */}
             <ul className="w-full flex justify-around">
-              {menuList.map((menuItem, index) =>
-                index === 0 ? ( // All인 경우, 수정 필요
-                  <ClosetButton
-                    key={index}
-                    index={index}
-                    name={menuItem}
-                    status={menuStatus["status" + (index + 1)]}
-                    handleStatus={handleMenuStatus}
-                  />
-                ) : (
-                  // 그 외 경우
-                  <ClosetButton
-                    key={index}
-                    index={index}
-                    name={menuItem}
-                    status={menuStatus["status" + (index + 1)]}
-                    handleStatus={handleMenuStatus}
-                  />
-                )
-              )}
+              {menuList.map((menuItem, index) => (
+                <ClosetButton
+                  key={index}
+                  index={index}
+                  name={menuItem}
+                  status={menuStatus["status" + index]}
+                  handleStatus={
+                    index === 0 ? handleAllMenuStatus : handleMenuStatus
+                  }
+                />
+              ))}
             </ul>
           </div>
           <div className="w-full h-full flex bg-orange-300 overflow-auto p-4">

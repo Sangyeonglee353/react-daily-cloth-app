@@ -14,7 +14,13 @@ const ClosetButton = ({ name, index, status, handleStatus }) => {
   const handleMenuClick = () => {
     // setClicked(!clicked);
     console.log("status: ", status);
-    handleStatus(`status${index + 1}`);
+    if (index === 0) {
+      // ALL
+      handleStatus(!status);
+    } else {
+      // Others
+      handleStatus(`status${index}`);
+    }
   };
 
   // 1. all 클릭 시 전체 on
@@ -23,7 +29,7 @@ const ClosetButton = ({ name, index, status, handleStatus }) => {
     // 메뉴 토글 버튼
     status === true ? (
       <button
-        className={`flex justify-center items-center w-10 h-3 px-10 py-4 border rounded-md bg-blue-500 text-white`}
+        className={`flex justify-center items-center w-10 h-3 px-10 py-4 border rounded-md bg-slate-600 border-slate-600 text-white`}
         onClick={handleMenuClick}
       >
         {name}
