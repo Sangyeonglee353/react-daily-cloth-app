@@ -56,8 +56,15 @@ const ClosetPage = () => {
       const updatedMenuStatus = {};
       // 전체 조건에 해당하는 조건 추가
       // 조건: status0: true인 경우, 클릭된 status ? true : false
-      for (const key in prevMenuStatus) {
-        updatedMenuStatus[key] = key === status ? !prevMenuStatus[key] : false;
+      if (prevMenuStatus["status0"] === true) {
+        for (const key in prevMenuStatus) {
+          updatedMenuStatus[key] = key === status ? true : false;
+        }
+      } else {
+        for (const key in prevMenuStatus) {
+          updatedMenuStatus[key] =
+            key === status ? !prevMenuStatus[key] : false;
+        }
       }
       return updatedMenuStatus;
     });
