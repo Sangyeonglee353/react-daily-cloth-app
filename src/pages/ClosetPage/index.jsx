@@ -79,7 +79,8 @@ const ClosetPage = () => {
     <section name="closet" className="w-full min-h-[1000px] flex ">
       <div className="w-full h-full flex flex-col justify-center max-w-screen-lg px-4 mx-auto mt-[100px]">
         <div className="w-full max-h-[1000px] flex flex-col">
-          <div className="w-full h-[80px] flex items-center border border-solid border-black rounded-t-2xl">
+          {/* <div className="w-full h-[80px] flex items-center border border-solid border-black rounded-t-2xl"> */}
+          <div className="w-full h-[80px] flex items-center">
             {/* 메뉴 Area */}
             <ul className="w-full flex justify-around">
               {menuList.map((menuItem, index) => (
@@ -95,7 +96,7 @@ const ClosetPage = () => {
               ))}
             </ul>
           </div>
-          <div className="w-full h-full flex bg-orange-300 overflow-auto p-4">
+          <div className="w-full h-full flex overflow-auto p-4">
             {/* 옷 나열 리스트 Area*/}
             {/* <ul className="w-full grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid=cols-3 lg:grid-cols-5 justify-items-center"> */}
             <ul className="w-full grid grid-cols-1 gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 justify-items-center">
